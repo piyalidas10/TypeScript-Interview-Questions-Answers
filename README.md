@@ -25,5 +25,45 @@ https://www.totaltypescript.com/tsconfig-cheat-sheet
 | 15   |  What is a Union in TypeScript? <br><br> TypeScript allows us to use more than one data type for a variable or a function parameter. This is called union type. When you want that a variable should be able to handle two or more data types. Then you can use a pipe sign That is the union type. <br/> https://www.tutorialsteacher.com/typescript/typescript-union
 | 16   |  What is Narrowing in TypeScript? <br><br> Type narrowing is a process of refining or narrowing down the type using certain conditions with a particular code block. <br/> https://www.typescriptlang.org/docs/handbook/2/narrowing.html <br/> https://medium.com/@hrishikesh.pandey9955/what-is-narrowing-in-typescript-047b4c450de4
 | 17   |  What is type guards in TypeScript? <br><br> Type guards enable you to instruct the TypeScript compiler to infer a specific type for a variable in a particular context. There are several types of type guards : 1) typeof 2) instanceof 3) Custom Type Guards <br/> https://www.typescriptlang.org/docs/handbook/advanced-types.html
+| 18   |  What is static in TypeScript? <br><br> In TypeScript, you can use the static keyword to define static class members, including properties. A static property is a property that is shared across all instances of a class, and can be accessed without creating an instance of the class. 
+```
+class Counter {
+    static count: number = 0;
 
+    static increment() {
+        Counter.count++;
+    }
+}
+console.log(Counter.count);  // Output: 0
+Counter.increment();
+console.log(Counter.count);  // Output: 1
 
+Advantages of Using 'static'
+Shared State: Static properties allow you to maintain shared state across all instances of a class. This can be valuable for scenarios where maintaining a common value or counter is required.
+Utility Functions: Static methods are excellent for creating utility functions that are related to the class but don't require an instance to operate. They keep the class's namespace clean by not cluttering it with instance-specific methods.
+Singular Configuration: When you need configuration settings that apply to the entire class, using static properties can centralize this configuration without needing to replicate it across instances.
+Factory Methods: Static methods can be used as factory methods to create instances of a class with specific configurations, simplifying the process of instance creation.
+```
+| No. | Questions                                                                                                                                                         |
+| --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 19  |  Advantages of Enum in TypeScript? <br><br> 
+```
+export enum AppData {
+  APPSERVER = 1.0,
+  DT = Date.now()
+}
+console.log(AppData); // {1: "APPSERVER", APPSERVER: 1, DT: 1735204902342, 1735204902342: "DT"}
+
+let a = 3;
+let b = 6;
+export enum Result {
+  SUM = sum(a, b)
+}
+function sum(a, b) {
+  return a + b;
+}
+console.log(Result); // {9: "SUM", SUM: 9}
+```
+| No. | Questions                                                                                                                                                         |
+| --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 19  |  What will the output of `const {a=90, b} = {}; console.log(a, b);`? <br><br> Ans. 90 undefined 
