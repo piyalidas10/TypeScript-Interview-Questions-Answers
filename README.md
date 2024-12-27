@@ -156,3 +156,23 @@ function getLength<T extends IC>(v: T): void {
 }
 getLength('Hi');
 ```
+| No. | Questions                                                                                                                                                         |
+| --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 29  |  What is Namespace in Typescript ? <br><br> TypeScript, a namespace is a way to organize code into logical groups and avoid naming collisions between identifiers. Namespaces provide a way to group related code into a single namespace or module so that we can manage, reuse and maintain our code easily.
+
+<h5>Benefits of Using Namespaces:</h5>
+<strong>Logical grouping:</strong>strong> Namespaces provide a way to group related code into a single namespace or module, making it easier to manage and maintain your code.
+<strong>Avoid naming collisions:</strong> Namespaces help to avoid naming collisions between identifiers by providing a unique namespace for each piece of code.
+<strong>Encapsulation:</strong> Namespaces provide a way to encapsulate code by hiding implementation details and only exposing the public API.
+<strong>Modularity:</strong> Namespaces provide a way to create modular code by breaking up a large codebase into smaller, more manageable pieces.
+
+We have also defined a function called myFunction inside the namespace. The export keyword is used to make the function accessible outside the namespace.
+```
+namespace Myself {
+    export function myFunction() {
+        console.log('This is my function');
+    }
+}
+Myself.myFunction(); // Output: This is my function
+```
+
