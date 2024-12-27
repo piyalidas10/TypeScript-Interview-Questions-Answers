@@ -73,3 +73,27 @@ console.log(Result); // {9: "SUM", SUM: 9}
 | 24  |  Can a class inherit from more than two abstract classes? <br><br> Ans. Yes, A class can inherit from any number of abstract classes.
 | 25  |  What is Class Accessors (getter & setter) ? <br><br> The getter method is executed when you read/get the value. The setter method is executed when you assign a value to that property. <br/> https://www.typescripttutorial.net/typescript-tutorial/typescript-getters-setters/ 
 | 26  |  What is Interfaces ? <br><br> TypeScript interfaces define the structure of an object, specifying property types and method signatures. They act as contracts, ensuring that objects adhere to a particular shape, enhancing type safety and code readability, and enabling features like optional properties, read-only properties, and interface inheritance. `interface IPerson { name: string; age: number; address?: string; display() => void; }  class Customer implements IPerson{ name: 'test', age: 20; display(){console.log('hi');}` <br/> https://www.geeksforgeeks.org/what-is-interfaces-and-explain-it-in-reference-of-typescript/?ref=lbp
+| 27  |  What is readonly property in Typescript ? <br><br> In TypeScript, readonly properties in an object type ensure that a property can only be set during the object's initialization. Once assigned, the value of a readonly property cannot be changed, providing a way to create immutable object properties. 
+```
+interface Employee {
+  readonly name: string;
+}
+const employee: Employee = { name: 'Michael Scott' };
+employee.name = 'Oscar Martinez'; // will get compile error
+
+No, readonly properties cannot be modified after the object is created. Any attempt to change the value of a readonly property will result in a TypeScript error.
+```
+| 28  |  Readonly vs Const in Typescript ? <br><br> readonly applies to object properties and prevents modification after initialization, while const applies to variables and prevents reassignment of the variable itself, not its contents if it's an object or array. <br/> A const variable cannot be re-assigned, just like a readonly property. Essentially, when you define a property, you can use readonly to prevent re-assignment. This is actually only a compile-time check. When you define a const variable (and target a more recent version of JavaScript to preserve const in the output), the check is also made at runtime.
+```
+let tuple: Readonly<[number, string]> = [0, ''];
+tuple.shift(); // Property 'shift' does not exist on type 'readonly [number, string]'.
+tuple.pop(); // Property 'pop' does not exist on type 'readonly [number, string]'.
+
+const Arr = [1,2,3];
+
+Arr[0] = 10;   //OK
+Arr.push(12); // OK
+Arr.pop(); //Ok
+//But
+Arr = [4,5,6] // ERROR
+```
