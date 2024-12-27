@@ -83,6 +83,8 @@ employee.name = 'Oscar Martinez'; // will get compile error
 
 No, readonly properties cannot be modified after the object is created. Any attempt to change the value of a readonly property will result in a TypeScript error.
 ```
+| No. | Questions                                                                                                                                                         |
+| --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 28  |  Readonly vs Const in Typescript ? <br><br> readonly applies to object properties and prevents modification after initialization, while const applies to variables and prevents reassignment of the variable itself, not its contents if it's an object or array. <br/> A const variable cannot be re-assigned, just like a readonly property. Essentially, when you define a property, you can use readonly to prevent re-assignment. This is actually only a compile-time check. When you define a const variable (and target a more recent version of JavaScript to preserve const in the output), the check is also made at runtime.
 ```
 let tuple: Readonly<[number, string]> = [0, ''];
@@ -96,4 +98,61 @@ Arr.push(12); // OK
 Arr.pop(); //Ok
 //But
 Arr = [4,5,6] // ERROR
+```
+| No. | Questions                                                                                                                                                         |
+| --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 29  |  When & why use Generics in Typescript ? <br><br> Generics enables developers to write reusable and type-safe code. Generics allow you to create components that can work over a variety of types rather than a single one. When you start needing a generic is when you truly don't know what the type is going to be passed into the function, class, interface, constant.
+```
+function add<T, U>(a:T, b:U) {
+    console.log(a+b);
+}
+add<number, string>(1, 'hi');
+add<string, number>('hi', 1);
+----------------------------------------------------------------------
+class Box<T> {
+    private value: T;
+    constructor(value: T) {
+        this.value = value;
+    }
+    getValue(): T {
+        return this.value;
+    }
+}
+let box = new Box<number>(42);
+console.log(box.getValue()); // Output: 42
+----------------------------------------------------------------------
+interface Pair<T, U> {
+    first: T;
+    second: U;
+}
+let pair: Pair<number, string> = { first: 1, second: "two" };
+console.log(pair); // Output: { first: 1, second: "two" }
+
+function reverse<T>(array: T[]): T[] {
+    return array.reverse();
+}
+----------------------------------------------------------------------
+let numbers: number[] = [1, 2, 3, 4, 5];
+let reversedNumbers: number[] = reverse(numbers);
+console.log(reversedNumbers); // Output: [5, 4, 3, 2, 1]
+```
+
+| No. | Questions                                                                                                                                                         |
+| --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 29  |  What is Generic Constraints in Typescript ? <br><br> In TypeScript, generic constraints restrict the types that can be used with a generic type by using the extends keyword.
+```
+function getLength<T>(v: T): void {
+    console.log(v.length); // will get error "property length doesn't exist on type T"
+}
+getLength('Hi');
+
+Now here we want to put a constraint that allows to pass only those values which have length property. string in our case
+--------------------------------------------------------------------------------------------
+interface IC {
+    length: number;
+}
+function getLength<T extends IC>(v: T): void {
+    console.log(v.length); // display 2
+}
+getLength('Hi');
 ```
