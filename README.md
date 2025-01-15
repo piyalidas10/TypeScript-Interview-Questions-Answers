@@ -175,4 +175,151 @@ namespace Myself {
 }
 Myself.myFunction(); // Output: This is my function
 ```
+| No. | Questions                                                                                                                                                         |
+| --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 30  |  What is readonly type ? <br><br> you can use readonly to prevent re-assignment. This is actually only a compile-time check. 
+```
+type Person = {
+     readonly name: string;
+     age: number;
+}
+const person1: Person = {
+   name = "John";
+   age: 30;
+}
+// name property will not change 'cuz it was assigned to be readonly
+person1.name = "Sarah"; ❌
+person1.age = 20; ✅ 
+```
+| No. | Questions                                                                                                                                                         |
+| --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 31  |  How to use the `readonly` keyword on an interface? <br><br> 
+```
+interface Car {
+ make: string;
+ model: string;
+}
+const readonlyCar1: Readonly<Car> = {
+ make: "Tesla",
+ model: "Model S"
+};
+// This will not compile because the make property is readonly
+readonlyCar1.make = "Toyota"; ❌
+// This will not compile because the model property is readonly
+readonlyCar1.model = "Camry"; ❌
+
+const car2: Car = {
+ make: "Tesla",
+ model: "Model S"
+};
+car2.make = "Toyota"; // OK ✅
+car2.model = "Camry"; // OK ✅
+```
+
+| No. | Questions                                                                                                                                                         |
+| --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 32  |  Write down union type ? <br><br> Unions are created using the | (pipe) operator, which represents a value that can have any of the types in the union. Take the following example: 
+```
+type ProductCode = number | string;
+In this code, ProductCode can be either a string or a number. The following code will pass the type checker:
+type ProductCode = number | string;
+const productCodeA: ProductCode = 'this-works';
+const productCodeB: ProductCode = 1024;
+---------------------------------------------------------------------
+const stuff: (num | string)[] = [1, 2, 'a'];
+---------------------------------------------------------------------
+type DayOfWeek =
+  | "Monday"
+  | "Tuesday"
+  | "Wednesday"
+  | "Thursday"
+  | "Friday"
+  | "Saturday"
+  | "Sunday";
+
+let today: DayOfWeek = "Sunday";
+```
+
+| No. | Questions                                                                                                                                                         |
+| --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 33  |  What is Intersection types ? <br><br> You can use intersection types to create a completely new type that has all the properties of all the types being intersected together. In this example, two interfaces named student and teacher are created. Intersected type is created by using ‘&’ between student and teacher. Intersected type contains all the properties of the two interfaces. An obj of intersection type is created and values are retrieved from it. We can not use a property without assigning it to the intersection type object.
+```
+interface Student { 
+student_id: number; 
+name: string; 
+} 
+
+interface Teacher { 
+Teacher_Id: number; 
+teacher_name: string; 
+} 
+
+type intersected_type = Student & Teacher; 
+
+let obj1: intersected_type = { 
+student_id: 3232, 
+name: "rita", 
+Teacher_Id: 7873, 
+teacher_name: "seema", 
+}; 
+
+console.log(obj1.Teacher_Id); 
+console.log(obj1.name);
+-------------------------------------------------------------------------------------------------
+interface CreateArtistBioBase {
+  artistID: string;
+  thirdParty?: boolean;
+}
+type CreateArtistBioRequest = CreateArtistBioBase & ({ html: string } | { markdown: string });
+
+// Now you can only create a request when you include
+// artistID and either html or markdown
+
+const workingRequest: CreateArtistBioRequest = {
+  artistID: "banksy",
+  markdown: "Banksy is an anonymous England-based graffiti artist...",
+};
+```
+| No. | Questions                                                                                                                                                         |
+| --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 35  |  What is Literal Types ? <br><br> 
+```
+// Literal Types
+let zero: 0 = 0;
+let mood: "Happy" | "Sad" = "Happy";
+mood = "Sad";
+-------------------------------------------------------------
+type DayOfWeek =
+  | "Monday"
+  | "Tuesday"
+  | "Wednesday"
+  | "Thursday"
+  | "Friday"
+  | "Saturday"
+  | "Sunday";
+let today: DayOfWeek = "Sunday";
+---------------------------------------------------------------
+type SkillLevel = "Beginner" | "Intermediate" | "Advanced" | "Expert"; // SkillLevel is Literal Types
+type SkiSchoolStudent = {
+  name: string;
+  age: number;
+  sport: "ski" | "snowboard";
+  level: SkillLevel;
+};
+```
+
+| No. | Questions                                                                                                                                                         |
+| --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 36  |  How will create custom type ? <br><br> 
+```
+type Programmer = {
+  name: string;
+  knownFor: string[];
+};
+
+const ada: Programmer = {
+  name: 'Ada Lovelace',
+  knownFor: ['Mathematics', 'Computing', 'First Programmer']
+};
+```
 
