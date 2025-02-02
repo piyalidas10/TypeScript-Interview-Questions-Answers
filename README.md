@@ -282,7 +282,7 @@ const workingRequest: CreateArtistBioRequest = {
 ```
 | No. | Questions                                                                                                                                                         |
 | --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 35  |  What is Literal Types ? <br><br> 
+| 35  |  What is Literal Types ? <br><br> TypeScript's literal types allow developers to specify exact values for variables, function parameters, or properties, enhancing type safety by ensuring variables can only hold predefined values.
 ```
 // Literal Types
 let zero: 0 = 0;
@@ -310,7 +310,7 @@ type SkiSchoolStudent = {
 
 | No. | Questions                                                                                                                                                         |
 | --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 36  |  How will create custom type ? <br><br> 
+| 36  |  How will create custom type ? <br><br> In TypeScript, the syntax for creating custom types is to use the type keyword followed by the type name and then an assignment to a {} block with the type properties. Take the following:
 ```
 type Programmer = {
   name: string;
@@ -324,15 +324,14 @@ const ada: Programmer = {
 ```
 | No. | Questions                                                                                                                                                         |
 | --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 37  |  Create a tuple ? <br><br>
+| 37  |  Create a tuple ? <br><br> Typically an array contains zero to many objects of a single type. TypeScript has special analysis around arrays which contain multiple types, and where the order in which they are indexed is important. These are called tuples.
 ```
 type HTTTResponse = [number, string];
 const apiRes: HTTTResponse = [["200", "Ok"], ["404", "Not Found"]];
 ```
 | No. | Questions                                                                                                                                                         |
 | --- | ----------------------------------- ------------------------------------------------------------------------------------------------------------------------------ |
-| 38  |  What is Merging Interfaces ? <br><br>
-At the most basic level, the merge mechanically joins the members of both declarations into a single interface with the same name.
+| 38  |  What is Merging Interfaces ? <br><br> At the most basic level, the merge mechanically joins the members of both declarations into a single interface with the same name.
 ```
 interface Box {
   height: number;
@@ -345,9 +344,7 @@ let box: Box = { height: 5, width: 6, scale: 10 };
 ```
 | No. | Questions                                                                                                                                                         |
 | --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 38  |  Can you extend interface in TypeScript? <br><br>
-Interfaces in TypeScript are a powerful way to define contracts within your code and they can be extended using the extends keyword. This is one of the most straightforward methods to extend a type. 
-extends is used for class inheritance, allowing a class to inherit properties and methods from another class.
+| 38  |  Can you extend interface in TypeScript? <br><br> <strong>Interfaces</strong> in TypeScript are a powerful way to define contracts within your code and they can be extended using the extends keyword. This is one of the most straightforward methods to extend a type. <br/> <strong>extends</strong> is used for class inheritance, allowing a class to inherit properties and methods from another class.
 ```
 interface Person {
   name: string
@@ -366,9 +363,7 @@ const employee: Employee = {
 ```
 | No. | Questions                                                                                                                                                         |
 | --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 39  |  Extends and Implements in TypeScript? <br><br>
-<strong>extends</strong> is used for class inheritance, allowing a class to inherit properties and methods from another class.<br>
-<strong>implements</strong> is used for interface implementation, ensuring a class adheres to a defined contract.
+| 39  |  Extends and Implements in TypeScript? <br><br> <strong>extends</strong> is used for class inheritance, allowing a class to inherit properties and methods from another class.<br> <strong>implements</strong> is used for interface implementation, ensuring a class adheres to a defined contract.
 ```
 interface Product {
     productId: string;
@@ -397,8 +392,7 @@ myWasher.turnOn(); // LG washing machine is now on.
 ```
 | No. | Questions                                                                                                                                                         |
 | --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 40  |  Type vs Interface in TypeScript? <br><br>
-https://blog.logrocket.com/types-vs-interfaces-typescript/  <br>
+| 40  |  Type vs Interface in TypeScript? <br><br> https://blog.logrocket.com/types-vs-interfaces-typescript/  <br>
 ```
 Union types
 ===================================================================
