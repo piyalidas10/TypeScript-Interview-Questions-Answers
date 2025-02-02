@@ -322,4 +322,11 @@ const ada: Programmer = {
   knownFor: ['Mathematics', 'Computing', 'First Programmer']
 };
 ```
+| No. | Questions                                                                                                                                                         |
+| --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 37  |  Create a tuple ?
+```
+type HTTTResponse = [number, string];
+const apiRes: HTTTResponse = [["200", "Ok"], ["404", "Not Found"]];
+```
 
