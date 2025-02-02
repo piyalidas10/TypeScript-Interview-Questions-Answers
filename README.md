@@ -324,9 +324,126 @@ const ada: Programmer = {
 ```
 | No. | Questions                                                                                                                                                         |
 | --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 37  |  Create a tuple ?
+| 37  |  Create a tuple ? <br><br>
 ```
 type HTTTResponse = [number, string];
 const apiRes: HTTTResponse = [["200", "Ok"], ["404", "Not Found"]];
 ```
+| No. | Questions                                                                                                                                                         |
+| --- | ----------------------------------- ------------------------------------------------------------------------------------------------------------------------------ |
+| 38  |  What is Merging Interfaces ? <br><br>
+At the most basic level, the merge mechanically joins the members of both declarations into a single interface with the same name.
+```
+interface Box {
+  height: number;
+  width: number;
+}
+interface Box {
+  scale: number;
+}
+let box: Box = { height: 5, width: 6, scale: 10 };
+```
+| No. | Questions                                                                                                                                                         |
+| --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 38  |  Can you extend interface in TypeScript? <br><br>
+Interfaces in TypeScript are a powerful way to define contracts within your code and they can be extended using the extends keyword. This is one of the most straightforward methods to extend a type. 
+extends is used for class inheritance, allowing a class to inherit properties and methods from another class.
+```
+interface Person {
+  name: string
+  age: number
+}
 
+interface Employee extends Person {
+  employeeId: number
+}
+
+const employee: Employee = {
+  name: 'John Doe',
+  age: 30,
+  employeeId: 123
+}
+```
+| No. | Questions                                                                                                                                                         |
+| --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 39  |  Extends and Implements in TypeScript? <br><br>
+<strong>extends</strong> is used for class inheritance, allowing a class to inherit properties and methods from another class.<br>
+<strong>implements</strong> is used for interface implementation, ensuring a class adheres to a defined contract.
+```
+interface Product {
+    productId: string;
+}
+interface Appliance extends Product {
+    brand: string;
+    turnOn(): void;
+}
+
+class WashingMachine implements Appliance {
+    productId: string;
+    brand: string;
+
+    constructor(productId:string, brand: string) {
+        this.productId = productId;
+        this.brand = brand;
+    }
+
+    turnOn(): void {
+        console.log(`${this.brand} washing machine is now on. The Product id is ${this.productId}`);
+    }
+}
+
+const myWasher = new WashingMachine('pd001', 'LG');
+myWasher.turnOn(); // LG washing machine is now on.
+```
+| No. | Questions                                                                                                                                                         |
+| --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 40  |  Type vs Interface in TypeScript? <br><br>
+https://blog.logrocket.com/types-vs-interfaces-typescript/  <br>
+```
+Union types
+===================================================================
+Union types allow us to describe values that can be one of several types and create unions of various primitive, literal, or complex types:
+type Transport = 'Bus' | 'Car' | 'Bike' | 'Walk';
+Union type can only be defined using type. There is no equivalent to a union type in an interface.
+
+Merging
+===================================================================
+we can define an interface multiple times, and the TypeScript compiler will automatically merge these definitions into a single interface definition.
+interface Client { 
+    name: string; 
+}
+interface Client {
+    age: number;
+}
+const harry: Client = {
+    name: 'Harry',
+    age: 41
+}
+Type aliases can’t be merged in the same way. If you try to define the Clienttype more than once, an error will be thrown:
+
+Extends and intersection
+===================================================================
+An interface can extend one or multiple interfaces. Using the extendskeyword, a new interface can inherit all the properties and methods of an existing interface while also adding new properties.
+interface Name {
+    name: string;
+}
+interface Person extends Name {
+    age: Number;
+}
+const person: Person = {
+  name: 'Joe',
+  age: 28
+}
+
+To achieve a similar result for types, we need to use an intersection operator:
+type Name = {
+    name: string;
+}
+type Person = Name & {
+    age: Number;
+}
+const person: Person = {
+  name: 'Joe',
+  age: 28
+}
+```
