@@ -24,6 +24,40 @@ https://www.totaltypescript.com/tsconfig-cheat-sheet
 | 14   |  What is a tuple in TypeScript? <br><br> TypeScript introduced a new data type called Tuple. Tuple can contain two values of different data types. It can limit the number of elements along with the data type. `let employee: [number, string] = [1, "Steve"]; let customers: [number, string][]; customers = [[1, "Steve"], [2, "Bill"], [3, "Jeff"]];`
 | 15   |  What is a Union in TypeScript? <br><br> TypeScript allows us to use more than one data type for a variable or a function parameter. This is called union type. When you want that a variable should be able to handle two or more data types. Then you can use a pipe sign That is the union type. <br/> https://www.tutorialsteacher.com/typescript/typescript-union
 | 16   |  What is Narrowing in TypeScript? <br><br> Type narrowing is a process of refining or narrowing down the type using certain conditions with a particular code block. <br/> https://www.typescriptlang.org/docs/handbook/2/narrowing.html <br/> https://medium.com/@hrishikesh.pandey9955/what-is-narrowing-in-typescript-047b4c450de4
+```
+function triple(value: number | string) {
+  if (typeof value === "string") {
+    return value.repeat(3);
+  }
+  return value * 3;
+}
+
+// Instanceof Narrowing:
+function printFullDate(date: string | Date) {
+  if (date instanceof Date) {
+    console.log(date.toUTCString());
+  } else {
+    console.log(new Date(date).toUTCString());
+  }
+}
+
+// Instanceof Narrowing:
+class User {
+  constructor(public username: string) {}
+}
+class Company {
+  constructor(public name: string) {}
+}
+function printName(entity: User | Company) {
+  if (entity instanceof User) {
+    entity;
+  } else {
+    entity;
+  }
+}
+```
+| No. | Questions                                                                                                                                                         |
+| --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 17   |  What is type guards in TypeScript? <br><br> Type guards enable you to instruct the TypeScript compiler to infer a specific type for a variable in a particular context. There are several types of type guards : 1) typeof 2) instanceof 3) Custom Type Guards <br/> https://www.typescriptlang.org/docs/handbook/advanced-types.html
 | 18   |  What is static in TypeScript? <br><br> In TypeScript, you can use the static keyword to define static class members, including properties. A static property is a property that is shared across all instances of a class, and can be accessed without creating an instance of the class. 
 ```
@@ -440,4 +474,40 @@ const person: Person = {
   name: 'Joe',
   age: 28
 }
+```
+| No. | Questions                                                                                                                                                         |
+| --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 41  |  What is the never type in TypeScript? <br><br> In TypeScript, the never type is used to specify the types that do not occur. It is mostly used to represent the functions that do not return any type of value after execution of the code written inside it. 
+```
+This example displays the throwCustomError function that when called gives an Error and does not return any output and the program ends.
+
+function throwCustomError(message: string): never {
+    throw new Error(message);
+}
+function processResult(result: string | null): string {
+    if (result === null) {
+        // This function throws an error, 
+        // so the next line is unreachable.
+        throwCustomError(&quot;Result is null.&quot;);
+    }
+    return result;
+}
+const result = processResult(&quot;Hello GeeksforGeeks!&quot;);
+console.log(result);
+```
+| No. | Questions                                                                                                                                                         |
+| --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 41  |  Realtime implementation of TypeScript? <br><br>
+<strong>index.t.ds of Axios package :</strong> https://stackblitz.com/edit/vitejs-vite-npgtjgrk?file=src%2Fmain.ts,node_modules%2Faxios%2Findex.d.ts
+```
+index.t.ds
+-----------------------------------------------
+index = you guess it right
+d = declaration
+ts = typescript
+
+A helper file if you will, it describes the types of functions, classes, variables, objects, exported by a module written in JavaScript. There s no logic, no code to be executed.
+What is it used for? To improve type safety in codes, provide intelli-sense(autocompletion), and we can also easily transition from JavaScript to TypeScript that way.
+In short, it describes a shape of a module (a JavaScript file), used for type checking. 
+.d.ts files are therefore strict blueprints which represent the types that your source code can use.
 ```
